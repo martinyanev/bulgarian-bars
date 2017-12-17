@@ -1,0 +1,332 @@
+.content{
+    height:100%;
+    width:100%;
+    background:#f00;
+    position: fixed;
+    overflow: auto;
+}
+
+/*
+Page 1
+ */
+
+.crown-map-bulgaria,
+.map-bulgaria{
+    max-width: 100%;
+}
+
+.page1-header nav .fa-info-circle {
+    font-size: 50px;
+}
+
+.page1-main h1 {
+    text-align: center;
+    color:lightgrey;
+    text-shadow: -1px 0 #654321, 0 2px #654321, 2px 0 #654321, 0 -1px #654321;
+    margin-bottom: 0;
+}
+
+.page1-main figure {
+    width: 80%;
+    margin: 3% auto;
+    position: relative;
+    z-index: 0;
+}
+.page1-main figure img.map-bulgaria {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+}
+.page1-main figure img.crown-map-bulgaria {
+    width: 7%;
+    position: absolute;
+    z-index: 1;
+}
+.crown-map-bulgaria:hover{
+    transform: scale(1.5, 1.5);
+    cursor: pointer;
+}
+.page1-main figure #sofia {
+    top: 46%;
+    left: 12%;
+}
+.page1-main figure #starazagora {
+    left: 48.7%;
+    top: 55%;
+}
+.page1-main figure #sliven {
+    left: 60%;
+    top: 46%;
+}
+.page1-main figure #burgas {
+    left: 78%;
+    top: 53%;
+}
+.page1-main h2 {
+    text-align: center;
+    color:lightgrey;
+    text-shadow: -1px 0 #654321, 0 2px #654321, 2px 0 #654321, 0 -1px #654321;
+}
+.page1-main div.top-3 {
+    display: flex;
+    justify-content: space-around;
+    color:lightgrey;
+    text-shadow: -1px 0 #654321, 0 1px #654321, 1px 0 #654321, 0 -1px #654321;
+}
+.top-3-header:hover{
+    cursor: pointer;
+}
+.page1-main div.top-3-headers {
+    display: flex;
+    justify-content: space-around;
+    color:lightgrey;
+    text-shadow: -1px 0 #654321, 0 1px #654321, 1px 0 #654321, 0 -1px #654321;
+}
+.page1-main div.top-3 div {
+    height: 350px;
+    width: 30%;
+    /*border: 1px solid red;*/
+}
+.page1-footer div.container-fluid {
+    margin: 3% 0;
+}
+.page1-footer div.contacts {
+    /*border: 1px solid red;*/
+    display: inline-block;
+}
+.page1-footer div.about-us {
+    /*border: 1px solid red;*/
+    margin: 0 auto;
+    display: inline-block;
+    float: right;
+    color:lightgrey;
+    text-shadow: -1px 0 #654321, 0 1px #654321, 1px 0 #654321, 0 -1px #654321;
+}
+.page1-footer div.copyright {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 17px;
+}
+
+.bar {
+    text-align: center;
+}
+
+.text{
+    background:darkgrey;
+    opacity:0;
+}
+
+.pic1:hover .text, .pic2:hover .text, .pic3:hover .text
+{
+    opacity:1;
+    text-align:justify;
+    color:#000000;
+    font-family:"Times New Roman", Times, serif;
+    padding:30px;
+}
+
+
+/*
+End Page 1
+ */
+
+/*
+Page 2
+ */
+
+.crown {
+    max-width: 100%;
+}
+
+header{
+    height: 10%;
+}
+header button {
+    width: 20%;
+    border: none;
+    background: gold;
+    color: black;
+    height: 40px;
+    border-radius: 25px;
+}
+
+header button:hover{
+    cursor: pointer;
+}
+header button.next {
+    float: right;
+    margin: 5% 5% 0 0;
+}
+header button.back {
+    margin: 5% 0 0 5%;
+}
+
+section.page2-section {
+    text-align: justify;
+    padding: 5%;
+    margin: 0 auto;
+}
+
+article{
+    margin-bottom: 20px;
+}
+article div.name {
+    height: 50px;
+}
+article h2{
+    font-weight: 900;
+    color:  #C0C0C0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-shadow: -1px 0 #654321, 0 1px #654321, 1px 0 #654321, 0 -1px #654321;
+    float: left;
+}
+article div.crowns {
+    height: 45px;
+    float: right;
+}
+article div.crowns img {
+    width: 50px;
+    float: right;
+}
+article div.info {
+    height: 260px;
+    background: #C0C0C0;
+}
+article img.bar-photo{
+    width: 350px;
+    height: 260px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 50%;
+    padding: 25px;
+}
+.selected-bar{
+    display: inline;
+    border-radius: 25px;
+    margin-left: 70px;
+    margin-top: 90px;
+}
+.selected-bar:hover{
+    cursor: pointer;
+}
+article ul{
+    font-size: 18px;
+    color: #333333;
+    margin: 0;
+    padding: 25px;
+    text-align: right;
+    width: 50%;
+    float: right;
+}
+article ul li {
+    list-style: none;
+    font-weight: bold;
+    color: white;
+    font-size: 23px;
+}
+
+footer div{
+    color: cornsilk;
+    margin: 2%;
+}
+footer .contact {
+    font-size: 20px;
+}
+footer .copyright {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 17px;
+}
+
+/*
+END Page 2
+ */
+
+/*
+Page 3
+ */
+h1>span{
+    cursor: pointer;
+}
+
+.map-container {
+    width: 100%;
+    height: 330px;
+    transform-style: preserve-3d;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.map {
+    width: 200px;
+    height: 300px;
+    margin: 0 -25px;
+    position: relative;
+    box-shadow: 0px 0px 110px -5px rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    -webkit-transition: .2s;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.map img {
+    width: 200px;
+    height: 300px;
+    border: 1px solid white;
+}
+
+.map:hover {
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transform: translateZ(5px) translateY(-20px) scale(1.05);
+    transform: translateZ(5px) translateY(-20px) scale(1.05);
+}
+
+.map-1,
+.map-4 {
+    -webkit-transform: translateZ(1px);
+    transform: translateZ(1px);
+}
+
+.map-2,
+.map-5 {
+    -webkit-transform: translateZ(2px) translateY(-5px);
+    transform: translateZ(2px) translateY(-5px);
+}
+
+.map-3 {
+    -webkit-transform: translateZ(3px) translateY(-10px);
+    transform: translateZ(3px) translateY(-10px);
+}
+
+.map-1:hover ~ .map-2 {
+    -webkit-transform: translateZ(4px) translateY(-15px);
+    transform: translateZ(4px) translateY(-15px);
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.map-4 {
+    -webkit-box-ordinal-group: 6;
+    -ms-flex-order: 5;
+    order: 5;
+}
+.map-4:hover ~ .map-5 {
+    -webkit-transform: translateZ(3px) translateY(-15px);
+    transform: translateZ(3px) translateY(-15px);
+    -webkit-transition: .1s;
+    transition: .1s;
+}
+/*
+END PAGE 3
+ */
