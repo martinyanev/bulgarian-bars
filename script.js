@@ -281,7 +281,6 @@ function renderPage1InHTML(cities){
 
     for (let key in cities){
         let city = cities[key];
-        // console.log(city['name']);
         let cityNameHere = city['name'].toLowerCase();
         // Clear spaces
         cityNameHere = cityNameHere.replace(/\s/g, '');
@@ -349,7 +348,6 @@ function renderPage1InHTML(cities){
         }
 
         getCitiesAndCityBar(foundedCityName, $(this).text())
-        // renderPage3InHTML(cities, 'Sofia', $(this).text());
     });
 
     $('.crown-map-bulgaria').click(function (e) {
@@ -363,7 +361,6 @@ function renderPage1InHTML(cities){
         }
 
         getCitiesAndCity(idName);
-        // renderPage2InHTML(cities, idName);
     })
 
 }
