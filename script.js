@@ -346,8 +346,8 @@ function renderPage1InHTML(cities){
                 }
             }
         }
-
-        getCitiesAndCityBar(foundedCityName, $(this).text())
+        console.log(foundedCityName);
+        // getCitiesAndCityBar(foundedCityName, $(this).text())
     });
 
     $('.crown-map-bulgaria').click(function (e) {
