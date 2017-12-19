@@ -139,7 +139,6 @@ function renderPage1InHTML(cities){
                 }
             }
         }
-        console.log(foundedCityName);
         getCitiesAndCityBar(foundedCityName, $(this).text())
     });
 
