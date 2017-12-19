@@ -318,7 +318,7 @@ function renderPage1InHTML(cities, cityName){
                         .css('background', 'url("img/' + city['name'] + '/' + bar['name'] + '/outside.jpg") no-repeat')
                         .css('background-size', 'cover');
                     appendTop3Bar.append(picDiv);
-                    picDiv.append('<h2>' + bar['name'] + '</h2>');
+                    picDiv.append('<h2 class="page1-barname">' + bar['name'] + '</h2>');
                     picDiv.append('<p class="text">' + bar['learnmore'] + '</p>');
 
                     top3Div.append(picDiv);
@@ -333,10 +333,10 @@ function renderPage1InHTML(cities, cityName){
     footer.append('<div class="about-us">#about-us: Daniel Kolev, Martin Yanev, Zdravko Zhelyazkov, Mariya Ruskova</div>');
     footer.append('<div class="copyright">Copyright &copy; 2017</div>');
 
-    $('.top-3-header').click(function (e) {
+    $('.page1-barname').click(function (e) {
         e.preventDefault();
 
-        renderPage2InHTML(cities, 'Sofia');
+        renderPage3InHTML(cities, 'Sofia', $(this).text());
     });
 
     $('.crown-map-bulgaria').click(function (e) {
@@ -349,7 +349,7 @@ function renderPage1InHTML(cities, cityName){
             idName = "Stara Zagora";
         }
 
-        renderPage3InHTML(cities, idName);
+        renderPage2InHTML(cities, idName);
     })
 
 }
@@ -494,7 +494,7 @@ function renderPage2InHTML(cities, cityName) {
     $('.selected-bar').click(function (e) {
         e.preventDefault();
 
-        renderPage3InHTML(cities, cityName);
+        renderPage3InHTML(cities, cityName, $(this).parent().parent().find('.name').find('h2').text());
     })
 }
 
@@ -507,64 +507,70 @@ END PAGE 3
 PAGE 3
  */
 
-function renderPage3InHTML(cities, cityName) {
+function renderPage3InHTML(cities, cityName, barName) {
     let bodyContent = $('.content');
     bodyContent.empty();
     bodyContent
         .css('background', 'url("img/Background Page 3.jpg") no-repeat')
         .css('background-size', 'cover');
 
-    let heading = $('<h1 class="text-center page3-heading"><span>' + cityName + '</span></h1>')
+    let heading = $('<h1 class="text-center page3-heading"><span>' + barName + '</span></h1>')
         .css('color', 'white')
         .css('padding-top', '50px');
     bodyContent.append(heading);
 
     let mapContainer = $('<div>').addClass('map-container');
 
-    let count = 0;
     for(let key in cities[cityName]['bars']){
         let bar = cities[cityName]['bars'][key];
 
-        let map = $('<div>').addClass('map').addClass('map-' + count);
-        let img = $('<img src="img/' + cityName + '/' + bar['name'] +
-            '/gallery.jpg" alt="Bar ' + count + ' image" id="' + bar['name'] + '">');
-        img.attr('id', bar['name']);
-        img.addClass('single-bar');
-        map.append(img);
-        mapContainer.append(map);
+        // HERE
+        if(bar['name'] === barName){
+            let map1 = $('<div>').addClass('map').addClass('map-1');
+            let imgOutside = $('<img src="img/' + cityName + '/' + bar['name'] +
+                '/outside-gallery.jpg" alt="Bar ' + barName + ' image">');
+            let map2 = $('<div>').addClass('map').addClass('map-2');
+            let imgInside = $('<img src="img/' + cityName + '/' + bar['name'] +
+                '/inside-gallery.jpg" alt="Bar ' + barName + ' image">');
+            let map3 = $('<div>').addClass('map').addClass('map-3');
+            let imgScreen = $('<img src="img/' + cityName + '/' + bar['name'] +
+                '/screen-gallery.jpg" alt="Bar ' + barName + ' image">');
+            let map4 = $('<div>').addClass('map').addClass('map-4');
+            let imgPool = $('<img src="img/' + cityName + '/' + bar['name'] +
+                '/pool-gallery.jpg" alt="Bar ' + barName + ' image">');
 
-        count++;
+            map1.append(imgOutside);
+            map2.append(imgInside);
+            map3.append(imgScreen);
+            map4.append(imgPool);
+
+            mapContainer.append(map1).append(map2).append(map3).append(map4);
+
+            bodyContent.append(mapContainer);
+            let galleryCard = $('<div>');
+            galleryCard.addClass('container').addClass('gallery-card');
+            bodyContent.append(galleryCard);
+
+            let card = $('<div>').addClass('card');
+            let cardHeader = $('<div>').addClass('card-header').append('<h2>' + barName + '</h2>');
+            card.append(cardHeader);
+
+            let cardBody = $('<div>').addClass('card-body');
+            cardBody.append('<h4 class="card-title">More info about: ' + barName + '</h4>');
+            cardBody.append('<p class="card-text">' + cities[cityName]['bars'][barName]['learnmore'] + '</p>');
+            cardBody.append('<img src="img/' + cityName + '/' + barName + '/location map.png" alt="location map" width="200px">');
+            cardBody.append('<a href="#" class="btn btn-primary float-right">Contact</a>');
+
+            card.append(cardBody);
+            galleryCard.append(card);
+        }
     }
-    bodyContent.append(mapContainer);
-    let galleryCard = $('<div>');
-    galleryCard.addClass('container').addClass('gallery-card');
-    bodyContent.append(galleryCard);
 
     $('.page3-heading').click(function (e) {
         e.preventDefault();
 
         renderPage1InHTML(cities);
     });
-
-    $('.single-bar').click(function (e) {
-        e.preventDefault();
-        galleryCard.empty();
-
-        let barName = $(this).get(0).id;
-
-        let card = $('<div>').addClass('card');
-        let cardHeader = $('<div>').addClass('card-header').append('<h2>' + barName + '</h2>');
-        card.append(cardHeader);
-
-        let cardBody = $('<div>').addClass('card-body');
-        cardBody.append('<h4 class="card-title">More info about: ' + barName + '</h4>');
-        cardBody.append('<p class="card-text">' + cities[cityName]['bars'][barName]['learnmore'] + '</p>');
-        cardBody.append('<img src="img/' + cityName + '/' + barName + '/location map.png" alt="location map" width="200px">');
-        cardBody.append('<a href="#" class="btn btn-primary float-right">Contact</a>');
-
-        card.append(cardBody);
-        galleryCard.append(card);
-    })
 }
 
 // END PAGE 3
@@ -580,4 +586,4 @@ renderPage1InHTML(citiesarray, 'Sofia');
 //renderPage2InHTML(citiesarray, 'Sofia');
 
 // Test Page 3
-// renderPage3InHTML(citiesarray, 'Sofia');
+// renderPage3InHTML(citiesarray, 'Sofia', 'Smog Cutter');
