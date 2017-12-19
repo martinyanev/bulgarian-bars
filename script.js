@@ -336,7 +336,19 @@ function renderPage1InHTML(cities){
     $('.page1-barname').click(function (e) {
         e.preventDefault();
 
-        getCitiesAndCityBar('Sofia', $(this).text())
+        let foundedCityName = '';
+        for(let key in cities){
+            let city = cities[key];
+            for(let anotherKey in cities[city['name']]['bars']){
+                let bar = city['bars'][anotherKey];
+                if (bar['name'] === $(this).text()){
+
+                    foundedCityName = city['name'];
+                }
+            }
+        }
+
+        getCitiesAndCityBar(foundedCityName, $(this).text())
         // renderPage3InHTML(cities, 'Sofia', $(this).text());
     });
 
