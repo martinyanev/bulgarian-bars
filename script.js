@@ -239,7 +239,7 @@ function renderContentInConsole(cities, cityName, barName) {
 PAGE 1
  */
 
-function renderPage1InHTML(cities, cityName){
+function renderPage1InHTML(cities){
     let bodyContent = $('.content');
     bodyContent.empty();
 
@@ -336,7 +336,8 @@ function renderPage1InHTML(cities, cityName){
     $('.page1-barname').click(function (e) {
         e.preventDefault();
 
-        renderPage3InHTML(cities, 'Sofia', $(this).text());
+        getCitiesAndCityBar('Sofia', $(this).text())
+        // renderPage3InHTML(cities, 'Sofia', $(this).text());
     });
 
     $('.crown-map-bulgaria').click(function (e) {
@@ -349,7 +350,8 @@ function renderPage1InHTML(cities, cityName){
             idName = "Stara Zagora";
         }
 
-        renderPage2InHTML(cities, idName);
+        getCitiesAndCity(idName);
+        // renderPage2InHTML(cities, idName);
     })
 
 }
@@ -443,9 +445,11 @@ function renderPage2InHTML(cities, cityName) {
                         let anotherCity = cities[anotherKey];
                         lastCityInArray = anotherCity['name'];
                     }
-                    renderPage2InHTML(cities, lastCityInArray);
+                    getCitiesAndCity(lastCityInArray)
+                    // renderPage2InHTML(cities, lastCityInArray);
                 } else {
-                    renderPage2InHTML(cities, lastCity);
+                    getCitiesAndCity(lastCity);
+                    // renderPage2InHTML(cities, lastCity);
                 }
             }
         }
@@ -469,12 +473,14 @@ function renderPage2InHTML(cities, cityName) {
             if (lastCityInArray === cityName){
                 for (let anotherKey in cities){
                     let anotherCity = cities[anotherKey];
-                    renderPage2InHTML(cities, anotherCity['name']);
+                    getCitiesAndCity(anotherCity['name'])
+                    // renderPage2InHTML(cities, anotherCity['name']);
                     break;
                 }
             } else {
                 if (foundCity) {
-                    renderPage2InHTML(cities, city['name']);
+                    getCitiesAndCity(city['name']);
+                    // renderPage2InHTML(cities, city['name']);
                     break;
                 }
 
@@ -488,13 +494,14 @@ function renderPage2InHTML(cities, cityName) {
     $('.page2-heading').click(function (e) {
         e.preventDefault();
 
-        renderPage1InHTML(cities);
+        getCities();
     });
 
     $('.selected-bar').click(function (e) {
         e.preventDefault();
 
-        renderPage3InHTML(cities, cityName, $(this).parent().parent().find('.name').find('h2').text());
+        getCitiesAndCityBar(cityName, $(this).parent().parent().find('.name').find('h2').text());
+        // renderPage3InHTML(cities, cityName, $(this).parent().parent().find('.name').find('h2').text());
     })
 }
 
@@ -569,21 +576,63 @@ function renderPage3InHTML(cities, cityName, barName) {
     $('.page3-heading').click(function (e) {
         e.preventDefault();
 
-        renderPage1InHTML(cities);
+        getCities()
+        // renderPage1InHTML(cities);
     });
 }
 
 // END PAGE 3
+
+/*
+Getting info from database
+ */
+
+function getCities() {
+    let host = 'https://bulgarian-bars-2a762.firebaseio.com/.json';
+
+    $.ajax(host, {
+        method: 'GET',
+        success: function (response) {
+            renderPage1InHTML(response);
+        }
+    })
+}
+
+function getCitiesAndCity(city) {
+    let host = 'https://bulgarian-bars-2a762.firebaseio.com/.json';
+
+    $.ajax(host, {
+        method: 'GET',
+        success: function (response) {
+            renderPage2InHTML(response, city);
+        }
+    })
+}
+
+function getCitiesAndCityBar(city, bar) {
+    let host = 'https://bulgarian-bars-2a762.firebaseio.com/.json';
+
+    $.ajax(host, {
+        method: 'GET',
+        success: function (response) {
+            renderPage3InHTML(response, city, bar);
+        }
+    })
+}
+
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 // Test Page 1
-renderPage1InHTML(citiesarray, 'Sofia');
+// renderPage1InHTML(citiesarray);
 
 // Test Page 2
 //renderPage2InHTML(citiesarray, 'Sofia');
 
 // Test Page 3
 // renderPage3InHTML(citiesarray, 'Sofia', 'Smog Cutter');
+
+// Start Page
+getCities();
