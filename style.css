@@ -318,6 +318,10 @@ footer .copyright {
 }
 
 @media screen and (max-width: 660px) {
+    article{
+        height: auto;
+        overflow: hidden;
+    }
     article ul{
         width: 30%;
     }
