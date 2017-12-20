@@ -121,9 +121,33 @@ function renderPage1InHTML(cities){
 
     let footer = $('<footer>').addClass('page1-footer');
     bodyContent.append(footer);
-    footer.append('<div class="contacts">#contacts : mob: 123-456-789 - email: adventure@island.team\n</div>');
-    footer.append('<div class="about-us">#about-us: Daniel Kolev, Martin Yanev, Zdravko Zhelyazkov, Mariya Ruskova</div>');
-    footer.append('<div class="copyright">Copyright &copy; 2017</div>');
+    let firstSection = $('<section>');
+    firstSection.append($('<h2>Contacts</h2>\n' +
+        '        <div>\n' +
+        '            <ul>\n' +
+        '                <li>mob: 123-456-789</li>\n' +
+        '                <li>email: adventure@island.team</li>\n' +
+        '            </ul>\n' +
+        '            <ul>\n' +
+        '                We are:\n' +
+        '                <li>Daniel Kolev</li>\n' +
+        '                <li>Martin Yanev</li>\n' +
+        '                <li>Zdravko Atanasov</li>\n' +
+        '                <li>Mariya Ruskova</li>\n' +
+        '            </ul>\n' +
+        '        </div>'));
+    footer.append(firstSection);
+    let secondSection = $('<section>');
+    secondSection.append('<h2>let\'s get in touch</h2>\n' +
+        '        <div>\n' +
+        '            <div class="facebook"><a href="#"></a></div>\n' +
+        '            <div class="linkedin"><a href="#"></a></div>\n' +
+        '            <div class="youtube"><a href="#"></a></div>\n' +
+        '            <div class="twitter"><a href="#"></a></div>\n' +
+        '        </div>');
+    footer.append(secondSection);
+    let copyright = $('<div class="copyright">Copyright &copy; 2017</div>');
+    footer.append(copyright);
 
     $('.page1-barname').click(function (e) {
         e.preventDefault();
@@ -180,8 +204,8 @@ function renderPage2InHTML(cities, cityName) {
     bodyContent.append(heading);
 
     let header = $('<header>');
-    header.append('<button class="back" type="button">Back</button>');
-    header.append('<button class="next" type="button">Next</button>');
+    header.append('<button class="back" type="button">Back to First Page</button>');
+    header.append('<button class="next" type="button">Next City</button>');
 
     bodyContent.append(header);
 
@@ -223,12 +247,11 @@ function renderPage2InHTML(cities, cityName) {
     }
 
     let footer = $('<footer>');
-    footer.append('<div class="contact">Contact</div>');
     footer.append('<div class="copyright">Copyright &copy; 2017</div>');
 
     bodyContent.append(footer);
 
-    $('.back').click(function (e) {
+    /*$('.back').click(function (e) {
         e.preventDefault();
 
         let lastCity;
@@ -254,7 +277,7 @@ function renderPage2InHTML(cities, cityName) {
                 }
             }
         }
-    });
+    });*/
 
 
     $('.next').click(function (e) {
@@ -292,7 +315,7 @@ function renderPage2InHTML(cities, cityName) {
         }
     });
 
-    $('.page2-heading').click(function (e) {
+    $('.back').click(function (e) {
         e.preventDefault();
 
         getCities();
@@ -307,7 +330,7 @@ function renderPage2InHTML(cities, cityName) {
 }
 
 /*
-END PAGE 3
+END PAGE 2
  */
 
 
