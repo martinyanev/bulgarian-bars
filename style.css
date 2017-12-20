@@ -315,6 +315,9 @@ footer .copyright {
         height: 200px;
         width: 200px;
     }
+    .back{
+        width: 143px;
+    }
 }
 
 @media screen and (max-width: 660px) {
@@ -384,6 +387,9 @@ h1>span{
 }
 @media screen and (max-width: 600px){
     .map { width: 100px; }
+    .map-container{
+        left: -45px;
+    }
 }
 @media screen and (max-width: 500px){
     .map { width: 70px; }
